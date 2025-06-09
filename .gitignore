@@ -1,0 +1,25 @@
+# Ignore node modules
+backend/node_modules/
+frontend/node_modules/
+
+# Ignore environment variables
+backend/.env
+frontend/.env
+
+# Logs
+*.log
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# VS Code settings (optional)
+.vscode/
+
+# Dependency lockfiles (if using yarn or pnpm and not committing lockfile)
+yarn.lock
+pnpm-lock.yaml
+
+# Ignore builds (if frontend builds stuff)
+frontend/build/
+dist/
