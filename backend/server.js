@@ -63,11 +63,17 @@ io.on('connection', (socket) => {
     console.log(`✅ User ${userId} connected`);
   });
 
-  socket.on('sendMessage', ({ senderId, receiverId, text }) => {
-    const user = getUser(receiverId);
-    if (user) {
-      io.to(user.socketId).emit('getMessage', { senderId, text });
-    }
+  socket.on('joinRoom', (conversationId) => {
+    socket.join(conversationId);
+    console.log(`🟢 User joined room ${conversationId}`);
+  });
+
+  socket.on('sendMessage', ({ sender, conversationId, text }) => {
+    // Send to all in room (except sender)
+    socket.to(conversationId).emit('newMessage', { sender, conversationId, text });
+
+    // Optionally send to sender too for confirmation
+    socket.emit('newMessage', { sender, conversationId, text });
   });
 
   socket.on('disconnect', () => {
@@ -76,8 +82,9 @@ io.on('connection', (socket) => {
     console.log('❌ A user disconnected');
   });
 });
+
   
- const proposalRoutes = require('./routes/proposalRoutes');
+const proposalRoutes = require('./routes/proposalRoutes');
 app.use('/api/proposals', proposalRoutes);
 
 
