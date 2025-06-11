@@ -4,8 +4,11 @@ import Login from "./login";
 import Signup from "./signup";
 import Profile from "./profile";
 import PostTask from "./postTask";
+import ChatPage from "./chat/ChatPage";
 
 function App() {
+  const user = JSON.parse(localStorage.getItem("user")); // Get user from localStorage
+
   return (
     <Router>
       <Routes>
@@ -13,6 +16,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/post-task" element={<PostTask />} />
+        <Route path="/chat" element={<ChatPage user={user} />} />
       </Routes>
     </Router>
   );
