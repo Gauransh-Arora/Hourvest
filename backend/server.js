@@ -9,13 +9,13 @@ const app = express();
 const server = http.createServer(app); // use this to create the HTTP server
 const io = new Server(server, {
   cors: {
-    origin: 'http://localhost:5173',
+    origin:['http://localhost:3000', 'http://localhost:5173'],
     credentials: true,
   },
 });
 
 // Allow cross-origin requests
-app.use(cors({ origin: 'http://localhost:5173', credentials: true }));
+app.use(cors({ origin: ['http://localhost:3000', 'http://localhost:5173'], credentials: true }));
 app.use(express.json());
 
 // Connect to MongoDB
@@ -30,6 +30,8 @@ connectDB()
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/tasks', require('./routes/tasks'));
 app.use('/api/chat', require('./routes/chat'));
+app.use('/api/userRoutes', require('./routes/userRoutes'));
+
 
 app.get('/debug-task-route', (req, res) => {
   res.send('Task route is working');
@@ -74,6 +76,10 @@ io.on('connection', (socket) => {
     console.log('❌ A user disconnected');
   });
 });
+  
+ const proposalRoutes = require('./routes/proposalRoutes');
+app.use('/api/proposals', proposalRoutes);
+
 
 // ✅ Only this should be used to start the server
 const PORT = process.env.PORT || 5000;

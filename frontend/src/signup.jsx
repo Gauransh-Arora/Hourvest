@@ -4,7 +4,7 @@ import "./auth.css";
 
 const Signup = () => {
   // store user input
-  const [name, setName] = useState("");
+  const [username, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -14,8 +14,8 @@ const Signup = () => {
 
     try {
       // send signup data to backend
-      const res = await axios.post("http://localhost:5000/api/signup", {
-        name,
+      const res = await axios.post("http://localhost:5000/api/auth/register", {
+        username,
         email,
         password,
       });
@@ -39,7 +39,7 @@ const Signup = () => {
         <input
           type="text"
           placeholder="Full Name"
-          value={name}
+          value={username}
           onChange={(e) => setName(e.target.value)}
           required
         />
