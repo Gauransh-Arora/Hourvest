@@ -63,6 +63,13 @@ const Signup = () => {
         <button type="submit">Sign Up</button>
       </form>
 
+      <button onClick={() => {
+  window.location.href = "http://localhost:5000/auth/google";
+}}>
+  Sign in with Google
+</button>
+  
+
       <p>Already have an account? <a href="/login">Log in</a></p>
     </div>
   );

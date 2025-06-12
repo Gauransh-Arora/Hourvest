@@ -2,12 +2,30 @@
 const express = require('express');
 const router = express.Router();
 const { registerUser,loginUser } = require('../controllers/authController');
-
+const passport = require('passport');
 // POST /api/auth/register
 router.post('/register', registerUser);
 
 // ✅ Login route
 router.post('/login', loginUser);
+// 🔐 Google Auth entry point
+router.get('/google', passport.authenticate('google', {
+  scope: ['profile', 'email']
+}));
+
+// 🏁 Google Auth callback
+router.get('/google/callback',
+  passport.authenticate('google', {
+    failureRedirect: '/login',
+    session: false // optional if you’re only using JWTs
+  }),
+  (req, res) => {
+    const token = req.user.token;
+    res.redirect(`http://localhost:3000/oauth-success?token=${token}`);
+  }
+);
+
+  
 
 
 module.exports = router;

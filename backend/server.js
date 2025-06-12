@@ -5,8 +5,21 @@ const http = require('http');
 const { Server } = require('socket.io');
 const cors = require('cors');
 
+
+
+const session = require('express-session');
+const passport = require('passport');
+require('./passport'); // load passport strategy
+
+
+
+
+
 const app = express();
 const server = http.createServer(app); // use this to create the HTTP server
+
+
+
 const io = new Server(server, {
   cors: {
     origin:['http://localhost:3000', 'http://localhost:5173'],
@@ -25,6 +38,38 @@ connectDB()
     console.error('❌ MongoDB connection failed:', err.message);
     process.exit(1);
   });
+
+
+app.use(session({
+  secret: 'super-secret-session', // just needed for passport session
+  resave: false,
+  saveUninitialized: true
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Step 1: Redirect to Google for login
+app.get('/auth/google',
+  passport.authenticate('google', { scope: ['profile', 'email'] })
+);
+
+// Step 2: Handle callback from Google
+app.get('/auth/google/callback',
+  passport.authenticate('google', { failureRedirect: '/login-failure' }),
+  (req, res) => {
+    // Send token back to frontend as query param or cookie
+    const token = req.user.token;
+
+    // Option 1: Send token as query param
+    res.redirect(`http://localhost:3000/oauth-success?token=${token}`);
+
+    // Option 2 (Alternative): Send as cookie (needs extra setup)
+  }
+);
+
+
+
 
 // Routes
 app.use('/api/auth', require('./routes/auth'));
