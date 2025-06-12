@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
   const [user, setUser] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -21,6 +23,7 @@ const Profile = () => {
         });
 
         setUser(res.data);
+        localStorage.setItem("user", JSON.stringify(res.data)); // ✅ Save user to localStorage for ChatPage
       } catch (err) {
         console.error("Error fetching profile:", err);
         alert("Session expired. Please log in again.");
@@ -44,10 +47,18 @@ const Profile = () => {
         style={styles.logoutBtn}
         onClick={() => {
           localStorage.removeItem("token");
+          localStorage.removeItem("user");
           window.location.href = "/login";
         }}
       >
         Logout
+      </button>
+
+      <button
+        style={styles.chatBtn}
+        onClick={() => navigate("/chat")}
+      >
+        Go to Chat
       </button>
     </div>
   );
@@ -68,6 +79,15 @@ const styles = {
     marginTop: "20px",
     padding: "10px 20px",
     backgroundColor: "#ff4d4d",
+    color: "white",
+    border: "none",
+    borderRadius: "5px",
+    cursor: "pointer",
+  },
+  chatBtn: {
+    marginTop: "10px",
+    padding: "10px 20px",
+    backgroundColor: "#4caf50",
     color: "white",
     border: "none",
     borderRadius: "5px",
