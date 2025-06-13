@@ -11,7 +11,7 @@ const ChatList = ({ user, setCurrentChat }) => {
 
       if (!token) {
         alert("Session expired. Please log in again.");
-        window.location.href = "/login";
+        window.location.href = "/";
         return;
       }
 
@@ -30,7 +30,7 @@ const ChatList = ({ user, setCurrentChat }) => {
         console.error("❌ Error fetching conversations:", err);
         alert("Unauthorized. Please log in again.");
         localStorage.removeItem("token");
-        window.location.href = "/login";
+        window.location.href = "/";
       }
     };
 
