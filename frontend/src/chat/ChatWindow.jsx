@@ -16,7 +16,7 @@ const ChatWindow = ({ currentChat, user }) => {
       const token = localStorage.getItem("token");
       if (!token) {
         alert("Please login again");
-        window.location.href = "/login";
+        window.location.href = "/";
         return;
       }
 
@@ -57,7 +57,7 @@ const ChatWindow = ({ currentChat, user }) => {
     const token = localStorage.getItem("token");
     if (!token) {
       alert("Please login again");
-      window.location.href = "/login";
+      window.location.href = "/";
       return;
     }
 

@@ -8,19 +8,24 @@ const Profile = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
+    console.log("🔐 Profile page token:", token);
 
     if (!token) {
-      window.location.href = "/login";
+      console.log("❌ No token found. Redirecting to login.");
+      window.location.href = "/";
       return;
     }
 
     const fetchProfile = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/userRoutes/profile", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const res = await axios.get(
+          "http://localhost:5000/api/userRoutes/profile",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
 
         setUser(res.data);
         localStorage.setItem("user", JSON.stringify(res.data)); // ✅ Save user to localStorage for ChatPage
@@ -28,7 +33,7 @@ const Profile = () => {
         console.error("Error fetching profile:", err);
         alert("Session expired. Please log in again.");
         localStorage.removeItem("token");
-        window.location.href = "/login";
+        window.location.href = "/";
       }
     };
 
@@ -40,24 +45,25 @@ const Profile = () => {
   return (
     <div style={styles.container}>
       <h2>Welcome back, {user.name}!</h2>
-      <p><strong>Email:</strong> {user.email}</p>
-      <p><strong>Minits:</strong> {user.minits || 0}</p>
+      <p>
+        <strong>Email:</strong> {user.email}
+      </p>
+      <p>
+        <strong>Minits:</strong> {user.minits || 0}
+      </p>
 
       <button
         style={styles.logoutBtn}
         onClick={() => {
           localStorage.removeItem("token");
           localStorage.removeItem("user");
-          window.location.href = "/login";
+          window.location.href = "/";
         }}
       >
         Logout
       </button>
 
-      <button
-        style={styles.chatBtn}
-        onClick={() => navigate("/chat")}
-      >
+      <button style={styles.chatBtn} onClick={() => navigate("/chat")}>
         Go to Chat
       </button>
     </div>

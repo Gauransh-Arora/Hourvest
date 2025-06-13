@@ -12,7 +12,7 @@ const PostTask = () => {
     const token = localStorage.getItem("token");
     if (!token) {
       alert("Please log in to post a task.");
-      window.location.href = "/login";
+      window.location.href = "/";
       return;
     }
 
