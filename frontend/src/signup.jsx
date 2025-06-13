@@ -70,7 +70,7 @@ const Signup = () => {
 </button>
   
 
-      <p>Already have an account? <a href="/login">Log in</a></p>
+      <p>Already have an account? <a href="/">Log in</a></p>
     </div>
   );
 };
