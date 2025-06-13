@@ -1,6 +1,12 @@
 const mongoose = require('mongoose');
 
 const taskSchema = new mongoose.Schema({
+  title:{
+    type:String,
+    required:[true,'Tilte is required for the task'],
+    trim: true, // remove leading/trailing spaces
+    maxlength: [100, 'Title can be max 100 characters'], // prevent absurdly long titles
+  },
   description: {
     type: String,
     required: [true, 'Task description is required'],
