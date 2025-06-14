@@ -6,13 +6,26 @@ import { Plus } from "lucide-react";
 
 export default function HomePage() {
   const [tasks, setTasks] = useState([]);
-  const user = JSON.parse(localStorage.getItem("user"));
   const [loadingChatId, setLoadingChatId] = useState(null);
+
+  let user = null;
+  try {
+    try {
+      const storedUser = localStorage.getItem("user");
+      if (storedUser) user = JSON.parse(storedUser);
+    } catch (e) {
+      console.error("Invalid user in localStorage. Clearing...");
+      localStorage.removeItem("user");
+    }
+  } catch (err) {
+    console.error("Failed to parse user from localStorage:", err);
+    localStorage.removeItem("user"); // Clean up
+  }
 
   useEffect(() => {
     if (!user) {
       alert("Please login first.");
-      window.location.href = "/login";
+      window.location.href = "/";
     }
   }, [user]); // 👈 include `user` here
 
@@ -103,7 +116,7 @@ export default function HomePage() {
           tasks.map((task) => (
             <div className="task-card" key={task._id}>
               <div className="task-media">
-                {task.media?.length > 0 ? (
+                {task.media?.length > 0 && task.media[0] ? (
                   <video src={task.media[0]} controls />
                 ) : (
                   <div className="no-media">No media provided 📭</div>

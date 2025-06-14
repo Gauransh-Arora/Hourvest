@@ -34,7 +34,7 @@ const postTask = async (req, res) => {
 const getAllTasks = async (req, res) => {
   try {
     const tasks = await Task.find()
-      .populate('postedBy', 'username_id') // populate username only
+      .populate('postedBy', 'username') // populate username only
       .sort({ createdAt: -1 });
     
     res.status(200).json(tasks);
