@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
+
 const ChatList = ({ user, setCurrentChat }) => {
   const [conversations, setConversations] = useState([]);
 
@@ -20,7 +21,7 @@ const ChatList = ({ user, setCurrentChat }) => {
           "http://localhost:5000/api/chat/conversations",
           {
             headers: {
-              Authorization: `Bearer ${token}`, // ✅ Include token here
+              Authorization:` Bearer ${token}`, // ✅ Include token here
             },
             withCredentials: true,
           }
@@ -38,12 +39,16 @@ const ChatList = ({ user, setCurrentChat }) => {
   }, []);
 
   return (
-    <div style={{ width: "30%", borderRight: "1px solid #ccc" }}>
+    <div className="chat-list">
       <h3>Your Conversations</h3>
       {conversations.map((conv) => {
         const friend = conv.members.find((m) => m._id !== user._id);
         return (
-          <div key={conv._id} onClick={() => setCurrentChat(conv)}>
+          <div
+            key={conv._id}
+            className="chat-list-item"
+            onClick={() => setCurrentChat(conv)}
+          >
             <p>{friend?.username}</p>
           </div>
         );

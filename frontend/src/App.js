@@ -7,6 +7,7 @@ import PostTask from "./postTask";
 import OAuthSuccess from "./OAuthSuccess";
 import ChatPage from "./chat/ChatPage";
 import Home from "./home";
+import AIChatPage from "./aichat";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Route path="/oauth-success" element={<OAuthSuccess />} />
         <Route path="/chat" element={<ChatPage user={user} />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/aichat" element={<AIChatPage user={user} />} />
       </Routes>
     </Router>
   );

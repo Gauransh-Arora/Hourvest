@@ -1,0 +1,96 @@
+.profile-page {
+  min-height: 100vh;
+  background-color: #0c1b33;
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.profile-banner {
+  background: linear-gradient(135deg, #132a4f, #0f2545);
+  padding: 60px 30px 40px;
+  text-align: center;
+  border-bottom: 2px solid #facc15;
+  box-shadow: 0 2px 10px rgba(250, 204, 21, 0.2);
+}
+
+.profile-welcome {
+  font-size: 2.5rem;
+  color: #facc15;
+  margin-bottom: 0.5rem;
+}
+
+.profile-subtitle {
+  font-size: 1.2rem;
+  color: #e2e8f0;
+}
+
+.profile-content {
+  max-width: 700px;
+  margin: 50px auto;
+  background-color: #132a4f;
+  padding: 40px;
+  border-radius: 15px;
+  border: 2px solid #facc15;
+  box-shadow: 0 0 20px #facc15;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.profile-detail {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.1rem;
+  padding: 10px;
+  background-color: #1b345a;
+  border-radius: 8px;
+  border: 1px solid #facc15;
+}
+
+.profile-icon {
+  color: #facc15;
+}
+
+.profile-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.profile-button {
+  flex: 1;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-weight: 600;
+}
+
+.profile-button.logout {
+  background-color: #ff4d4d;
+  color: white;
+}
+
+.profile-button.logout:hover {
+  background-color: #ff3333;
+}
+
+.profile-button.chat {
+  background-color: #facc15;
+  color: black;
+}
+
+.profile-button.chat:hover {
+  background-color: #fde047;
+}
+
+.profile-loading {
+  color: #facc15;
+  text-align: center;
+  margin-top: 150px;
+  font-size: 1.4rem;
+}
