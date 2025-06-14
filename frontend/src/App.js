@@ -11,7 +11,17 @@ import AIChatPage from "./aichat";
 
 
 function App() {
-  const user = JSON.parse(localStorage.getItem("user")); // Get user from localStorage
+  let user = null;
+
+  try {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser && storedUser !== "undefined") {
+      user = JSON.parse(storedUser);
+    }
+  } catch (error) {
+    console.error("Error parsing user from localStorage:", error);
+    localStorage.removeItem("user"); // clean up if it's corrupted
+  }
 
   return (
     <Router>

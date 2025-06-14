@@ -124,7 +124,7 @@ const handleSubmit = async (e) => {
                 id="media"
                 name="media"
                 type="file"
-                accept="image/*,video/*"
+                accept="image/,video/"
                 multiple
                 onChange={handleMediaChange}
                 className="post-task-file"

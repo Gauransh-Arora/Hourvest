@@ -1,19 +1,26 @@
-// src/chat/ChatPage.jsx
-
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import socket from "./socket";
 import ChatList from "./ChatList";
 import ChatWindow from "./ChatWindow";
-import "./chat.css";
+import "../styles/chat.css";
 
 const ChatPage = ({ user }) => {
   const [currentChat, setCurrentChat] = useState(null);
+  const location = useLocation();
 
   useEffect(() => {
     if (user?._id) {
       socket.emit("addUser", user._id);
     }
-  }, [user]);
+
+    const queryParams = new URLSearchParams(location.search);
+    const conversationId = queryParams.get("conversationId");
+
+    if (conversationId) {
+      setCurrentChat({ _id: conversationId }); // Enough to pass it to ChatWindow
+    }
+  }, [user, location]);
 
   return (
     <div className="chat-page">

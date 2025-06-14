@@ -78,14 +78,12 @@ const Profile = () => {
             Logout
           </button>
 
-          <button
-            className="profile-button chat"
-            onClick={() => navigate("/chat")}
-          >
-            Go to Chat
-          </button>
+          <button  onClick={() => navigate("/Home")}>
+        Go to Home
+      </button>
         </div>
       </div>
+     
     </div>
   );
 };
