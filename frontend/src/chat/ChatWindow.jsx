@@ -97,15 +97,8 @@ const ChatWindow = ({ currentChat, user }) => {
   }
 
   return (
-    <div
-      style={{
-        flex: 1,
-        padding: "1rem",
-        display: "flex",
-        flexDirection: "column",
-      }}
-    >
-      <div style={{ flex: 1, overflowY: "auto" }}>
+    <div className="chat-window">
+      <div className="message-area">
         {messages.map((msg, i) => (
           <MessageBubble
             key={i}
@@ -118,16 +111,13 @@ const ChatWindow = ({ currentChat, user }) => {
         ))}
         <div ref={bottomRef} />
       </div>
-      <div style={{ display: "flex", marginTop: "1rem" }}>
+      <div className="send-box">
         <input
           value={newMsg}
           onChange={(e) => setNewMsg(e.target.value)}
           placeholder="Type a message"
-          style={{ flex: 1, padding: "0.5rem", borderRadius: "5px" }}
         />
-        <button onClick={handleSend} style={{ marginLeft: "10px" }}>
-          Send
-        </button>
+        <button onClick={handleSend}>Send</button>
       </div>
     </div>
   );

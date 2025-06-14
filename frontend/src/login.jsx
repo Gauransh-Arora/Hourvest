@@ -20,13 +20,23 @@ const Login = () => {
 
       // 4. If login works, store token in localStorage
       localStorage.setItem("token", res.data.token);
+      localStorage.setItem(
+        "user",
+        JSON.stringify({
+          _id: res.data._id,
+          username: res.data.username,
+          email: res.data.email,
+        })
+      );
+      // 👈 add this
 
       // 5. Redirect user to profile/dashboard
-      window.location.href = "/profile";
-
+      window.location.href = "/home";
     } catch (err) {
       // 6. Show alert if login failed
-      alert("Login failed: " + (err.response?.data?.message || "Try again later"));
+      alert(
+        "Login failed: " + (err.response?.data?.message || "Try again later")
+      );
     }
   };
 

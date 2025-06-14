@@ -63,8 +63,8 @@ const Profile = () => {
         Logout
       </button>
 
-      <button style={styles.chatBtn} onClick={() => navigate("/chat")}>
-        Go to Chat
+      <button style={styles.chatBtn} onClick={() => navigate("/Home")}>
+        Go to Home
       </button>
     </div>
   );
@@ -75,29 +75,35 @@ const styles = {
     maxWidth: "600px",
     margin: "100px auto",
     padding: "30px",
-    backgroundColor: "#1a1a1a",
+    backgroundColor: "#132a4f",
     color: "white",
     borderRadius: "10px",
     textAlign: "center",
-    boxShadow: "0 0 15px #00ffd5",
+    border: "1px solid #facc15",
+    boxShadow: "0 0 15px rgba(255, 255, 0, 0.1)",
+    fontFamily: "'Segoe UI', Tahoma, sans-serif",
   },
   logoutBtn: {
     marginTop: "20px",
     padding: "10px 20px",
-    backgroundColor: "#ff4d4d",
-    color: "white",
+    background: "linear-gradient(to right, #ff4d4d, #ff9999)",
+    color: "#000",
     border: "none",
-    borderRadius: "5px",
+    borderRadius: "6px",
+    fontWeight: "bold",
     cursor: "pointer",
+    transition: "all 0.2s ease",
   },
   chatBtn: {
     marginTop: "10px",
     padding: "10px 20px",
-    backgroundColor: "#4caf50",
-    color: "white",
+    background: "linear-gradient(to right, #22c55e, #7efc7e)",
+    color: "#000",
     border: "none",
-    borderRadius: "5px",
+    borderRadius: "6px",
+    fontWeight: "bold",
     cursor: "pointer",
+    transition: "all 0.2s ease",
   },
 };
 

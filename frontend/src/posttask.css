@@ -1,0 +1,105 @@
+/* Container */
+.post-task-wrapper {
+  min-height: 100vh;
+  background-color: #0c1b33;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+/* Card */
+.post-task-card {
+  background-color: #132a4f;
+  border: 2px solid #facc15;
+  border-radius: 20px;
+  max-width: 640px;
+  width: 100%;
+  box-shadow: 0 6px 20px rgba(255, 255, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.post-task-card:hover {
+  transform: scale(1.01);
+}
+
+/* Card content */
+.post-task-content {
+  padding: 32px;
+}
+
+/* Heading */
+.post-task-title {
+  font-size: 1.8rem;
+  color: #facc15;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+/* Labels */
+.post-task-label {
+  display: block;
+  font-size: 0.95rem;
+  color: #facc15;
+  margin-bottom: 6px;
+}
+
+/* Inputs, Textarea, Select */
+.post-task-input,
+.post-task-textarea,
+.post-task-select,
+.post-task-file {
+  width: 100%;
+  background-color: #1b345a;
+  color: white;
+  border: 1px solid #facc15;
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 16px;
+  font-size: 1rem;
+  outline: none;
+  transition: box-shadow 0.2s ease;
+}
+
+.post-task-input:focus,
+.post-task-textarea:focus,
+.post-task-select:focus,
+.post-task-file:focus {
+  box-shadow: 0 0 5px #facc15;
+}
+
+/* Media Preview */
+.post-task-media-preview {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  overflow-x: auto;
+}
+
+.post-task-media-preview video {
+  width: 160px;
+  border-radius: 8px;
+  border: 1px solid #facc15;
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+}
+
+/* Submit Button */
+.post-task-submit {
+  background: linear-gradient(to right, #facc15, #ffe78e);
+  color: black;
+  font-weight: bold;
+  border: none;
+  padding: 12px;
+  width: 100%;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s;
+}
+
+.post-task-submit:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(255, 255, 0, 0.25);
+}

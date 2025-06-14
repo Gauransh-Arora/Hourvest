@@ -20,14 +20,16 @@ const Signup = () => {
         password,
       });
 
-      // store token if signup is successful
       localStorage.setItem("token", res.data.token);
+      localStorage.setItem("user", JSON.stringify(res.data.user));
+      // 👈 add this
 
       // redirect to profile/dashboard
-      window.location.href = "/profile";
-
+      window.location.href = "/home";
     } catch (err) {
-      alert("Signup failed: " + (err.response?.data?.message || "Try again later"));
+      alert(
+        "Signup failed: " + (err.response?.data?.message || "Try again later")
+      );
     }
   };
 
@@ -63,14 +65,17 @@ const Signup = () => {
         <button type="submit">Sign Up</button>
       </form>
 
-      <button onClick={() => {
-  window.location.href = "http://localhost:5000/auth/google";
-}}>
-  Sign in with Google
-</button>
-  
+      <button
+        onClick={() => {
+          window.location.href = "http://localhost:5000/auth/google";
+        }}
+      >
+        Sign in with Google
+      </button>
 
-      <p>Already have an account? <a href="/">Log in</a></p>
+      <p>
+        Already have an account? <a href="/">Log in</a>
+      </p>
     </div>
   );
 };
