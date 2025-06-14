@@ -38,12 +38,16 @@ const ChatList = ({ user, setCurrentChat }) => {
   }, []);
 
   return (
-    <div style={{ width: "30%", borderRight: "1px solid #ccc" }}>
+    <div className="chat-list">
       <h3>Your Conversations</h3>
       {conversations.map((conv) => {
         const friend = conv.members.find((m) => m._id !== user._id);
         return (
-          <div key={conv._id} onClick={() => setCurrentChat(conv)}>
+          <div
+            key={conv._id}
+            className="chat-list-item"
+            onClick={() => setCurrentChat(conv)}
+          >
             <p>{friend?.username}</p>
           </div>
         );

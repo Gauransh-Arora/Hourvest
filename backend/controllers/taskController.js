@@ -4,7 +4,7 @@ const User = require('../models/User');
 // 1. Post a task
 const postTask = async (req, res) => {
   try {
-    const { description, mediaURL, minits, keywords } = req.body;
+    const {title, description, mediaURL, minits, keywords } = req.body;
     const userId = req.user.id; // from auth middleware
 
     if (!description || !minits) {
@@ -13,8 +13,9 @@ const postTask = async (req, res) => {
 
     // Create new task
     const task = new Task({
+      title,
       description,
-      media: mediaURL || '', // optional
+      media: Array.isArray(mediaURL) ? mediaURL : mediaURL ? [mediaURL] : [],
       minits,
       keywords,
       postedBy: userId,
@@ -33,7 +34,7 @@ const postTask = async (req, res) => {
 const getAllTasks = async (req, res) => {
   try {
     const tasks = await Task.find()
-      .populate('postedBy', 'username') // populate username only
+      .populate('postedBy', 'username_id') // populate username only
       .sort({ createdAt: -1 });
     
     res.status(200).json(tasks);
