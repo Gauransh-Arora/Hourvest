@@ -14,7 +14,7 @@ const server = http.createServer(app); // use this to create the HTTP server
 
 const io = new Server(server, {
   cors: {
-    origin: ["http://localhost:3000", "http://localhost:5173"],
+    origin: ["http://localhost:3000", "http://localhost:5173",  process.env.FRONTEND_URL ],
     credentials: true,
   },
 });
@@ -22,7 +22,7 @@ const io = new Server(server, {
 // Allow cross-origin requests
 app.use(
   cors({
-    origin: ["http://localhost:3000", "http://localhost:5173"],
+    origin: ["http://localhost:3000", "http://localhost:5173",process.env.FRONTEND_URL],
     credentials: true,
   })
 );

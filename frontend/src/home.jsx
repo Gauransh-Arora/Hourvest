@@ -97,6 +97,12 @@ export default function HomePage() {
           </button>
           <button
             className="sidebar-btn"
+            onClick={() => navigate("/aichat")}
+          >
+            🤖 AI Chat
+          </button>
+          <button
+            className="sidebar-btn"
             onClick={() => navigate("/post-task")}
           >
             <Plus size={14} /> Post Task

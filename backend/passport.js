@@ -23,7 +23,7 @@ passport.use(
             // Generate a random username
             const baseName = profile.displayName.replace(/\s+/g, '').toLowerCase();
             const randomNum = Math.floor(Math.random() * 10000);
-            const username = `${baseName}${randomNum}`;
+            const username = `${baseName}${randomNum}`; 
 
 
           // If not, create one
