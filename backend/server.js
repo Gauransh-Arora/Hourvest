@@ -55,15 +55,15 @@ app.get(
 
 // Step 2: Handle callback from Google
 app.get('/auth/google/callback',
-  passport.authenticate('google', { failureRedirect: 'http://localhost:3000/signup' }),
+  passport.authenticate('google', { failureRedirect: 'process.env.FRONTEND_URL/signup' }),
   (req, res) => {
     console.log("✅ Google user:", req.user);  // TEMP DEBUG LOG
     const token = req.user?.token;
 
     if (token) {
-      res.redirect(`http://localhost:3000/oauth-success?token=${token}`);
+      res.redirect(`process.env.FRONTEND_URL/oauth-success?token=${token}`);
     } else {
-      res.redirect('http://localhost:3000');
+      res.redirect('process.env.FRONTEND_URL');
     }
   }
 );

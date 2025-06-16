@@ -19,7 +19,7 @@ export default function ProposeForm() {
     }
 
     try {
-      const res = await fetch("http://localhost:5000/api/proposals", {
+      const res = await fetch("https://hourvest.onrender.com/api/proposals", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

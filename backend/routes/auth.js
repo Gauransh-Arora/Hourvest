@@ -16,12 +16,12 @@ router.get('/google', passport.authenticate('google', {
 // 🏁 Google Auth callback
 router.get('/google/callback',
   passport.authenticate('google', {
-    failureRedirect: 'http://localhost:3000/signup', // redirect to a failure page if needed
+    failureRedirect: 'http://process.env.FRONTEND_URL/signup', // redirect to a failure page if needed
     session: false // optional if you’re only using JWTs
   }),
   (req, res) => {
     const token = req.user.token;
-    res.redirect(`http://localhost:3000/oauth-success?token=${token}`);
+    res.redirect(`http://process.env.FRONTEND_URL/oauth-success?token=${token}`);
   }
 );
 

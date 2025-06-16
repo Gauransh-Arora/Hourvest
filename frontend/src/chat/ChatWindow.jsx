@@ -22,7 +22,7 @@ const ChatWindow = ({ currentChat, user }) => {
 
       try {
         const res = await axios.get(
-          `http://localhost:5000/api/chat/messages/${currentChat._id}`,
+          `https://hourvest.onrender.com/api/chat/messages/${currentChat._id}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -67,7 +67,7 @@ const ChatWindow = ({ currentChat, user }) => {
     };
 
     try {
-      await axios.post("http://localhost:5000/api/chat/messages", payload, {
+      await axios.post("https://hourvest.onrender.com/api/chat/messages", payload, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

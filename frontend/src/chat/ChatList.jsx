@@ -18,7 +18,7 @@ const ChatList = ({ user, setCurrentChat, currentChat }) => {
 
       try {
         const res = await axios.get(
-          "http://localhost:5000/api/chat/conversations",
+          "https://hourvest.onrender.com/api/chat/conversations",
           {
             headers: {
               Authorization: `Bearer ${token}`,

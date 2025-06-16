@@ -14,7 +14,7 @@ const Signup = () => {
 
     try {
       // send signup data to backend
-      const res = await axios.post("http://localhost:5000/api/auth/register", {
+      const res = await axios.post("https://hourvest.onrender.com/api/auth/register", {
         username,
         email,
         password,
@@ -77,12 +77,12 @@ const Signup = () => {
           cursor: "pointer",
         }}
         onClick={() => {
-          window.location.href = "http://localhost:5000/auth/google";
+          window.location.href = "https://hourvest.onrender.com/auth/google";
         }}
       >
         Sign in with Google
       </button>
-
+        
       <p>
         Already have an account? <a href="/">Log in</a>
       </p>

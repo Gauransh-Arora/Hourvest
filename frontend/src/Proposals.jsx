@@ -10,7 +10,7 @@ export default function Proposals() {
   useEffect(() => {
     const fetchProposals = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/proposals", {
+        const res = await fetch("https://hourvest.onrender.com/api/proposals", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -30,7 +30,7 @@ export default function Proposals() {
   const handleDecision = async (id, decision) => {
     try {
       const res = await fetch(
-        `http://localhost:5000/api/proposals/${id}/${decision}`,
+        `https://hourvest.onrender.com/api/proposals/${id}/${decision}`,
         {
           method: "PATCH",
           headers: {
@@ -48,7 +48,7 @@ export default function Proposals() {
 
       alert(`Proposal ${decision}ed!`);
 
-      const updatedProposals = await fetch("http://localhost:5000/api/proposals", {
+      const updatedProposals = await fetch("https://hourvest.onrender.com/api/proposals", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
